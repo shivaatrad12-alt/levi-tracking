@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card">
+    <h3>Upload Sticker PDF</h3>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input name="site" placeholder="Site Code (S01)" required>
+        <input name="room" placeholder="Room (KITCHEN)" required>
+        <input type="file" name="file" required>
+        <button class="btn primary" type="submit">Generate QR PDF</button>
+    </form>
+</div>
+
+<a href="/dashboard">
+    <button class="btn">⬅ Back to Dashboard</button>
+</a>
+
+{% endblock %}
