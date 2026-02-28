@@ -4,5 +4,4 @@ pypdf
 reportlab
 qrcode
 pillow
-jinja2
 python-multipart
