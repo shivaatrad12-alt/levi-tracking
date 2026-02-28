@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card">
+    <h3>Production Summary</h3>
+    {% if data %}
+        {% for row in data %}
+            <p><strong>{{ row[0] }}</strong> : {{ row[1] }}</p>
+        {% endfor %}
+    {% else %}
+        <p>No Data Available</p>
+    {% endif %}
+</div>
+
+<div class="card">
+    <a href="/admin">
+        <button class="btn primary">📄 Upload Stickers</button>
+    </a>
+</div>
+
+{% endblock %}
