@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card">
+    <h3>Piece ID:</h3>
+    <p><strong>{{ piece_code }}</strong></p>
+</div>
+
+<div class="card">
+    <h3>Status:</h3>
+    <p>
+        {% if status == "CUTTING" %}
+            <span style="color: orange;"><strong>{{ status }}</strong></span>
+        {% elif status == "QC_DONE" %}
+            <span style="color: blue;"><strong>{{ status }}</strong></span>
+        {% elif status == "DISPATCHED" %}
+            <span style="color: purple;"><strong>{{ status }}</strong></span>
+        {% elif status == "INSTALLED" %}
+            <span style="color: green;"><strong>{{ status }}</strong></span>
+        {% elif status == "MISSING" %}
+            <span style="color: red;"><strong>{{ status }}</strong></span>
+        {% else %}
+            <strong>{{ status }}</strong>
+        {% endif %}
+    </p>
+</div>
+
+<div class="card">
+    <form action="/update-status" method="post">
+        <input type="hidden" name="piece_code" value="{{ piece_code }}">
+        <button class="btn orange" name="status" value="QC_DONE">✔ QC Done</button>
+        <button class="btn purple" name="status" value="DISPATCHED">🚚 Dispatched</button>
+        <button class="btn green" name="status" value="INSTALLED">🏗 Installed</button>
+        <button class="btn red" name="status" value="MISSING">❌ Missing</button>
+    </form>
+</div>
+
+<a href="/dashboard">
+    <button class="btn">⬅ Back to Dashboard</button>
+</a>
+
+{% endblock %}
